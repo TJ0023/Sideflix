@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* html body, heading*/
+@layer base {
+    body {
+        @apply bg-[#141414] text-white scrollbar-hide;
+    }
+
+    header {
+        @apply fixed top-0 z-50 flex w-full items-center justify-between px-4 py-4 transition-all lg:px-10 lg:py-6 duration-[.25s]
+    }
+}
+/* applying a style to the header link
+ Apply makes it so that you can use tailwind css inside the brackets
+Of course you can use not and just use vanilla css which is fine but why use tailwind then?
+*/
+@layer components {
+    .headerLink {
+        @apply cursor-pointer text-sm font-semibold text-[#ffffff] transition duration-[.25s] 
+        hover:text-[#ffdd00];
+    }
+
+    .bannerButton {
+        @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition
+        hover:opacity-75 md:py-2.5 md:px-8 md:text-xl ;
+    }
+}
