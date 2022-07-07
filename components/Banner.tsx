@@ -16,17 +16,6 @@ function Banner({netflixOriginals}: Props) {
         setMovie(netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)])
     },[netflixOriginals])
   
-
-        //If text is too long, it'll be replaced with ... to avoid text from covering the screen too much
-    // So you insert the object or whatever text property you have inside this function and set the text string limit...
-    const truncateString = (str: string, num: number) => {
-        if(str?.length > num) {
-            return str.slice(0, num) + '...'
-        } else {
-            return str;
-        }
-    };
-
     return (
         
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] w-screen lg:justify-end lg:pb-12">
@@ -45,7 +34,7 @@ function Banner({netflixOriginals}: Props) {
             {movie?.title || movie?.name || movie?.original_name} 
         </h1>
         <p className='max-w-xs text-shadow-md text-xs md:max-w-large md:text-lg lg:max-w-2xl lg:text-2xl'>
-            {truncateString(movie?.overview, 170)}
+            {movie?.overview}
         </p>
 
         <div className="flex space-x-5">
