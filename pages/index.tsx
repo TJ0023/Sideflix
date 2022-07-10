@@ -5,6 +5,7 @@ import Banner from '../components/Banner'
 import requests from '../utils/requests'
 import { Movie } from '../typings'
 import Row from '../components/Row'
+import useAuth from '../hooks/useAuth'
 
 
 interface Props {
@@ -37,6 +38,10 @@ const Home = ({
   upcoming,}: Props) => {
   console.log(netflixOriginals);
   
+  const {logout, loading} = useAuth()
+
+    if (loading) return 'Loading'
+
   return (
     <div className="overflow-x-hidden scrollbar-hide relative h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:h-[100vw]">
       <Head>
