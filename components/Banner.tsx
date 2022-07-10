@@ -55,8 +55,8 @@ function Banner({ netflixOriginals }: Props) {
             setShowModal(true);
           }}
         >
-          More Info
           <InformationCircleIcon className="h-5 w-5 md:h-8 md:w-8 transition duration-200" />
+          More Info
         </button>
       </div>
     </div>
