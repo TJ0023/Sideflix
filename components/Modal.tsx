@@ -106,7 +106,7 @@ function Modal() {
         <div className="flex space-x-16 rounded-b-md bg-[#181818] px-10 py-8">
           <div className="space-y-6 text-lg">
             <div className="flex items-center space-x-2 text-sm">
-              <p className="font-semibold text-green-400">
+              <p className="font-semibold text-yellow-500">
                 {movie!.vote_average * 10}% Match
               </p>
               <p className="font-light">
