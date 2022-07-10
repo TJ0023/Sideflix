@@ -1,9 +1,11 @@
 import {useState, useEffect} from 'react'
 import {SearchIcon, BellIcon} from "@heroicons/react/solid"
 import Link from "next/link"
+import useAuth from '../hooks/useAuth'
 
 function Header() {
     const  [isScrolled, setIsScrolled] = useState(false)
+    const {logout} = useAuth()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -36,19 +38,20 @@ function Header() {
                 <li className='headerLink'>Movies</li>
                 <li className='headerLink'>New & Popular</li>
                 <li className='headerLink'>My List</li>
+              
             </ul>
         </div>
         {/* H or height measurements are .25em each increment */}
         <div className='flex items-center space-x-4 text-sm font-light'>
             <SearchIcon className='hidden h-6 w-6 cursor-pointer sm:inline '/>
             <BellIcon className='h-6 w-6 cursor-pointer' />
-            <Link href="/account">
-                <img 
+           
+                <img onClick={logout}
                 src= './profile-pic/spongebob.jpg'
                 alt=""
                 className='cursor-pointer rounded h-6 w-6'
                 />
-            </Link>
+           
         </div>
     </header>
   )
