@@ -72,7 +72,7 @@ function Modal() {
       setSaved(true);
       await updateDoc(movieID, {
         savedShows: arrayUnion({
-          media_type: movieRef?.media_type,
+          media_type: (movieRef?.media_type || movieRef?.original_language),
           id: movieRef?.id,
           img: movieRef?.backdrop_path,
           name: (movieRef?.title || movieRef?.name),
