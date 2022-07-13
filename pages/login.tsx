@@ -24,7 +24,7 @@ function Login() {
     if (login) {
       await signIn(data.email, data.password);
     } else {
-      await signUp(data.email.toLowerCase(), data.password.toLowerCase());
+      await signUp(data.email.toLowerCase(), data.password);
     }
   };
 
