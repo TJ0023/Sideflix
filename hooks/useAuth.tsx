@@ -8,7 +8,8 @@ import {
 
 import { useRouter } from "next/router";
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { auth } from "../Firebase";
+import { auth, db } from '../Firebase';
+import {setDoc,doc} from 'firebase/firestore'
 
 interface IAuth {
   user: User | null;
@@ -64,6 +65,9 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setLoading(true);
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        setDoc(doc(db, 'users', email), {
+          savedShows: []
+      })
         setUser(userCredential.user);
         router.push("/");
         setLoading(false);

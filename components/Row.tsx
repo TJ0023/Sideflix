@@ -37,6 +37,7 @@ function Row({title, movies}:Props) {
             {title}
         </h2>
         <div className='group relative md:-ml-2'>
+            
             <ChevronLeftIcon 
             className={`absolute top-0 bottom-0 left-2 z-40 m-auto h-9 w-9 cursor-pointer opacity-0 transition hover:scale-105 group-hover:opacity-100 rounded-full hover:bg-[#ffffff7c] ${!isMoved && 'hidden'}`} 
             onClick={() => handleClick("left")}/>

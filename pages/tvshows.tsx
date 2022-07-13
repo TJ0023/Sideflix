@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Header from "../components/Header";
-import Banner from "../components/Banner";
+import BannerTV from "../components/BannerTV";
 import requests from "../utils/requests";
 import { Movie } from "../typings";
 import Row from "../components/Row";
@@ -60,7 +60,7 @@ const Home = ({
       <Header />
 
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
-        <Banner netflixOriginals={netflixOriginals} />
+        <BannerTV popular={popular} />
 
         <section>
           <Row title="Trending Now" movies={trendingNow} />
@@ -76,11 +76,8 @@ const Home = ({
           <Row title="Romance Movies" movies={romanceMovies} />
           <Row title="Anime" movies={anime} />
         </section>
-        
       </main>
-
       {showModal && <Modal />}
-      
     </div>
   );
 };
