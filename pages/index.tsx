@@ -9,6 +9,8 @@ import useAuth from "../hooks/useAuth";
 import { useRecoilValue } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 import Modal from "../components/Modal";
+import Modal2 from "../components/Modal2";
+import SavedShows from "../components/SavedShows";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -63,6 +65,8 @@ const Home = ({
         <Banner netflixOriginals={netflixOriginals} />
 
         <section>
+
+
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Upcoming" movies={upcoming} />
           <Row title="Top Rated" movies={topRated} />
@@ -71,6 +75,7 @@ const Home = ({
 
           {/* My List/Saved Shows */}
 
+          
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />

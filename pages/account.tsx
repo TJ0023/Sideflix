@@ -23,7 +23,7 @@ const Account = () => {
              alt='netflix home screen' />
         <div className='bg-black/60 fixed top-0 left-0 w-full h-[550px]'></div>
         <div className='absolute top-[20%] p-4 md:p-8'>
-          <h1 className='text-3xl md:text-5xl font-bold'>My Saved Shows</h1>
+          <h1 className='text-3xl md:text-5xl font-bold'>My List</h1>
         </div>
       </div>
       <SavedShows />

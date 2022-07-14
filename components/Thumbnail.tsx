@@ -12,7 +12,7 @@ function Thumbnail({ movie }: Props) {
 
   return (
     <div
-      className="relative h-28 min-w-[250px] cursor-pointer transition duration-200 ease-out"
+      className="relative h-28 min-w-[300px] cursor-pointer transition duration-200 ease-out"
       onClick={() => {
         setCurrentMovie(movie);
         setShowModal(true);
@@ -25,6 +25,13 @@ function Thumbnail({ movie }: Props) {
         className="rounded-sm object-cover md:rounded"
         layout="fill"
       />
+
+      <div className='transition ease duration-200 absolute top-0 left-0 w-full h-full hover:bg-black/50 opacity-0 hover:opacity-100 text-white hover:ease-in-out'>
+          
+          <p className=' white-space-normal text-[10px] md:text-xs font-bold flex justify-center items-center h-full text-center break-normal flex-wrap'>
+              {movie.name || movie.title} 
+          </p>
+        </div>
     </div>
   );
 }

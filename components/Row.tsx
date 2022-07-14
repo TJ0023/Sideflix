@@ -48,8 +48,7 @@ function Row({title, movies}:Props) {
            <Thumbnail key={movie.id} movie={movie}/>
             ))}
        
-
-            {/*Thumbnail */}
+           
         </div>
 
             <ChevronRightIcon 

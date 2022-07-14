@@ -15,6 +15,14 @@ function Banner({ netflixOriginals }: Props) {
   const [movie, setMovie] = useState<Movie | null>(null);
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
+  const length = undefined;
+
+  //Adds an ellipsis to the overview if it's a tad bit too long.
+  function truncate(source : any, size : any) {
+    return source?.length > size ? source.slice(0, size - 1) + "…" : source;
+  }
+
+
   // Generates a random netflix movie through Math Random
   // Specifically from the Array of netflix originals
   useEffect(() => {
@@ -22,6 +30,7 @@ function Banner({ netflixOriginals }: Props) {
       netflixOriginals[Math.floor(Math.random() * netflixOriginals.length)]
     );
   }, [netflixOriginals]);
+
 
   return (
     <div className="flex flex-col space-y-2 py-16 md:space-y-4 lg:h-[65vh] w-screen lg:justify-end lg:pb-12">
@@ -40,7 +49,7 @@ function Banner({ netflixOriginals }: Props) {
         {movie?.title || movie?.name || movie?.original_name}
       </h1>
       <p className="max-w-xs text-shadow-md text-xs md:max-w-large md:text-lg lg:max-w-2xl lg:text-2xl">
-        {movie?.overview}
+        {truncate(movie?.overview, 150)}
       </p>
 
       <div className="flex space-x-5">
