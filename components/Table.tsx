@@ -42,7 +42,7 @@ function Table({ products, selectedPlan }: Props) {
             </td>
           ))}
         </tr>
-        //another tr
+
         <tr className="tableRow">
           <td className="tableDataTitle">
             {" "}
