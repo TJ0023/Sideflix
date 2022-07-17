@@ -18,7 +18,7 @@ function Table({ products, selectedPlan }: Props) {
             <td
               key={product.id}
               className={`tableDataFeature ${
-                selectedPlan.id === product.id
+                selectedPlan?.id === product.id
                   ? "text-[#c88b15]"
                   : "text-[gray]"
               }`}
@@ -27,7 +27,6 @@ function Table({ products, selectedPlan }: Props) {
             </td>
           ))}
         </tr>
-
         <tr className="tableRow">
           <td className="tableDataTitle">Video quality</td>
           {products.map((product) => (
@@ -43,7 +42,7 @@ function Table({ products, selectedPlan }: Props) {
             </td>
           ))}
         </tr>
-
+        //another tr
         <tr className="tableRow">
           <td className="tableDataTitle">
             {" "}
