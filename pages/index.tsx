@@ -11,6 +11,10 @@ import { modalState } from "../atoms/modalAtom";
 import Modal from "../components/Modal";
 import Modal2 from "../components/Modal2";
 import SavedShows from "../components/SavedShows";
+import Plans from "../components/Plans";
+import { getProducts, Product } from "@stripe/firestore-stripe-payments";
+import payments from "../lib/stripe";
+import useSubscription from "../hooks/useSubscription";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -24,7 +28,7 @@ interface Props {
   anime: Movie[];
   popular: Movie[];
   upcoming: Movie[];
-  // products: Product[]
+  products: Product[];
 }
 
 const Home = ({
@@ -39,15 +43,20 @@ const Home = ({
   anime,
   popular,
   upcoming,
+  products,
 }: Props) => {
   console.log(netflixOriginals);
 
   // const {logout, loading} = useAuth();
 
   //spencer
-  const { loading } = useAuth();
+  const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalState);
-  if (loading) return null;
+  const subscription = useSubscription(user);
+
+  if (loading || subscription === null) return null;
+
+  if (!subscription) return <Plans products={products} />;
 
   //original code
   // if (loading) return "Loading";
@@ -65,8 +74,6 @@ const Home = ({
         <Banner netflixOriginals={netflixOriginals} />
 
         <section>
-
-
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Upcoming" movies={upcoming} />
           <Row title="Top Rated" movies={topRated} />
@@ -75,17 +82,14 @@ const Home = ({
 
           {/* My List/Saved Shows */}
 
-          
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />
           <Row title="Anime" movies={anime} />
         </section>
-        
       </main>
 
       {showModal && <Modal />}
-      
     </div>
   );
 };
@@ -93,6 +97,13 @@ const Home = ({
 export default Home;
 
 export const getServerSideProps = async () => {
+  const products = await getProducts(payments, {
+    includePrices: true,
+    activeOnly: true,
+  })
+    .then((res) => res)
+    .catch((error) => console.log(error.message));
+
   const [
     netflixOriginals,
     trendingNow,
@@ -132,6 +143,7 @@ export const getServerSideProps = async () => {
       anime: anime.results,
       popular: popular.results,
       upcoming: upcoming.results,
+      products,
     },
   };
 };
