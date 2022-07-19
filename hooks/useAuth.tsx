@@ -65,9 +65,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     setLoading(true);
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        setDoc(doc(db, 'users', email), {
-          savedShows: []
-      })
         setUser(userCredential.user);
         router.push("/");
         setLoading(false);

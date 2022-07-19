@@ -1,4 +1,5 @@
 import {
+  CheckIcon,
   PlusIcon,
   ThumbUpIcon,
   VolumeOffIcon,
@@ -10,12 +11,13 @@ import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { setEnvironmentData } from "worker_threads";
 import { modalState, movieState } from "../atoms/modalAtom";
-import { Element, Genre } from "../typings";
+import { Element, Genre, Movie } from "../typings";
 import ReactPlayer from "react-player/lazy";
 import { FaPlay } from "react-icons/fa";
-import { arrayUnion, doc, updateDoc } from "firebase/firestore";
+import { arrayUnion, deleteDoc, doc, updateDoc,setDoc, onSnapshot, DocumentData, collection, } from "firebase/firestore";
 import { db } from '../Firebase';
 import useAuth from '../hooks/useAuth';
+import toast from "react-hot-toast";
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -24,6 +26,19 @@ function Modal() {
   const [trailer, setTrailer] = useState("");
   const [genres, setGenres] = useState<Genre[]>([]);
   const [muted, setMuted] = useState(false);
+  const [addedToList, setAddedToList] = useState(false);
+  const { user } = useAuth()
+  const [movies, setMovies] = useState<DocumentData[] | Movie[]>([])
+
+  const toastStyle = {
+    background: 'white',
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    padding: '15px',
+    borderRadius: '9999px',
+    maxWidth: '1000px',
+  }
 
   useEffect(() => {
     if (!movie) return;
@@ -58,36 +73,55 @@ function Modal() {
     setShowModal(false);
   };
 
-  const [like, setLike] = useState(false);
-  const [saved, setSaved] = useState(false);
-  const { user } = useAuth();
-
-  const movieID = doc(db, 'users', `${user?.email}`);
-
-
-  const movieRef = movie;
-  const saveShow = async () => {
-    if (user?.email) {
-      setLike(!like);
-      setSaved(true);
-      await updateDoc(movieID, {
-        savedShows: arrayUnion({
-          media_type: (movieRef?.media_type || movieRef?.original_language),
-          id: movieRef?.id,
-          img: movieRef?.backdrop_path,
-          name: (movieRef?.title || movieRef?.name),
-          overview: movieRef?.overview,
-          vote_count: movieRef?.vote_count,
-          original_language: movieRef?.original_language,
-          vote_average: movieRef?.vote_average,
-        }),
-      });
-    } else {
-      alert('Please log in to save a movie');
+  // Find all the movies in the user's list
+  useEffect(() => {
+    if (user) {
+      return onSnapshot(
+        collection(db, 'customers', user.uid, 'myList'),
+        (snapshot) => setMovies(snapshot.docs)
+      )
     }
-  };
-  
-  console.log(movieRef);
+  }, [db, movie?.id])
+
+  // Check if the movie is already in the user's list
+  useEffect(
+    () =>
+      setAddedToList(
+        movies.findIndex((result) => result.data().id === movie?.id) !== -1
+      ),
+    [movies]
+  )
+
+  const handleList = async () => {
+    if (addedToList) {
+      await deleteDoc(
+        doc(db, 'customers', user!.uid, 'myList', movie?.id.toString()!)
+      )
+
+      toast(
+        `${movie?.title || movie?.original_name} has been removed from My List`,
+        {
+          duration: 8000,
+          style: toastStyle,
+        }
+      )
+    } else {
+      await setDoc(
+        doc(db, 'customers', user!.uid, 'myList', movie?.id.toString()!),
+        {
+          ...movie,
+        }
+      )
+
+      toast(
+        `${movie?.title || movie?.original_name} has been added to My List.`,
+        {
+          duration: 8000,
+          style: toastStyle,
+        }
+      )
+    }
+  }
   return (
     <MuiModal
       open={showModal}
@@ -114,8 +148,15 @@ function Modal() {
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
         
-              <button className="modalButton" onClick={saveShow}>
-                <ThumbUpIcon className="h-7 w-7 hover:text-yellow-300" />
+            <button className="modalButton" onClick={handleList}>
+                {addedToList ? (
+                  <CheckIcon className="h-7 w-7" />
+                ) : (
+                  <PlusIcon className="h-7 w-7" />
+                )}
+              </button>
+              <button className="modalButton">
+                <ThumbUpIcon className="h-6 w-6" />
               </button>
             </div>
 
