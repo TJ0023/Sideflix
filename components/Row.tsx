@@ -7,7 +7,7 @@ import Thumbnail from "./Thumbnail"
 interface Props {
     title: string
      //For Firebase
-    movies: Movie | DocumentData []
+    movies: Movie[] | DocumentData []
 }
 function Row({title, movies}:Props) {
     const rowRef = useRef<HTMLDivElement>(null)

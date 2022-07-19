@@ -33,14 +33,14 @@ function Header() {
                 className="cursor-pointer object-contain"
             />
  <BasicMenu />
-            <ul className='hidden space-x-4 md:flex transition duration-[.25s]'>
+            {/* <ul className='hidden space-x-4 md:flex transition duration-[.25s]'>
                 <li className='headerLink'><Link href="/">Home </Link></li>
                 <li className='headerLink'>TV Shows</li>
                 <li className='headerLink'>Movies</li>
                 <li className='headerLink'>New & Popular</li>
                 <li className='headerLink'>My List</li>
-              {/* <Link href="/account"></Link> */}
-            </ul>
+              {/* <Link href="/account"></Link> 
+            </ul> */}
         </div>
         {/* H or height measurements are .25em each increment */}
         <div className='flex items-center space-x-4 text-sm font-light'>
