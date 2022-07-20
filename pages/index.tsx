@@ -76,10 +76,10 @@ const Home = ({
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
 
-        <div className="pb-[100px]">
+        <div className="pt-[25vh] md:pt-[0px] pb-[100px]">
           {list.length > 0 && <Row2 title="My List" movies={list} />}
         </div>
-          
+
         <section>
         {/* My List/Saved Shows */}
      
