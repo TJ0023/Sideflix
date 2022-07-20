@@ -5,6 +5,7 @@ import Banner from "../components/Banner";
 import requests from "../utils/requests";
 import { Movie } from "../typings";
 import Row from "../components/Row";
+import Row2 from "../components/Row2";
 import useAuth from "../hooks/useAuth";
 import { useRecoilValue } from "recoil";
 import { modalState, movieState } from "../atoms/modalAtom";
@@ -75,16 +76,20 @@ const Home = ({
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
 
+        <div className="pb-[100px]">
+          {list.length > 0 && <Row2 title="My List" movies={list} />}
+        </div>
+          
         <section>
+        {/* My List/Saved Shows */}
+     
           <Row title="Trending Now" movies={trendingNow} />
           <Row title="Upcoming" movies={upcoming} />
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Movies" movies={actionMovies} />
           <Row title="Documentaries" movies={documentaries} />
 
-          {/* My List/Saved Shows */}
-          {list.length > 0 && <Row title="My List" movies={list} />}
-          
+   
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
           <Row title="Romance Movies" movies={romanceMovies} />

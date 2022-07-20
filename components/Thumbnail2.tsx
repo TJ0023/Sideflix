@@ -52,7 +52,7 @@ function Thumbnail({ movie }: Props) {
   
   return (
     <div
-      className="relative h-[360px] min-w-[480px] cursor-pointer transition duration-200 ease-out flex justify-center p-10"
+      className="relative md:h-[270px] md:min-w-[480px] min-w-[320px] h-[180px] cursor-pointer transition duration-200 ease-out flex justify-center "
       onClick={() => {
         setCurrentMovie(movie);
         setShowModal(true);
@@ -62,11 +62,11 @@ function Thumbnail({ movie }: Props) {
         src={`https://image.tmdb.org/t/p/w500${
           movie.backdrop_path || movie.poster_path
         }`}
-        className="rounded-sm object-contain md:rounded transition duration-200 ease-out"
+        className="rounded-sm object-cover md:rounded transition duration-200 ease-out"
         layout="fill"
       />
 
-      <div className='absolute w-[480px] h-[280px] transition ease duration-200  hover:bg-black/50 opacity-0 hover:opacity-100 text-white hover:ease-in-out'>
+      <div className='absolute w-full h-full transition ease duration-200  hover:bg-black/50 opacity-0 hover:opacity-100 text-white hover:ease-in-out'>
           
           <p className=' white-space-normal text-[32px] md:text[48px]lg:[64px] font-bold flex justify-center items-center h-full text-center break-normal flex-wrap  transition ease duration-200  '>
               {movie.name || movie.title} 

@@ -32,7 +32,7 @@ const myList = ({products,}: Props) => {
     <div className="overflow-x-hidden scrollbar-hide relative  h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:h-[100vh]">
       <Header/>
 
-      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16 pt-[100px] px-[70px]">
+      <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16 pt-[35vh] px-[70px]">
 
       <section>
 
