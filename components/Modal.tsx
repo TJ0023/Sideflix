@@ -13,11 +13,10 @@ import { setEnvironmentData } from "worker_threads";
 import { modalState, movieState } from "../atoms/modalAtom";
 import { Element, Genre, Movie } from "../typings";
 import ReactPlayer from "react-player/lazy";
-import { FaPlay } from "react-icons/fa";
 import { arrayUnion, deleteDoc, doc, updateDoc,setDoc, onSnapshot, DocumentData, collection, } from "firebase/firestore";
 import { db } from '../Firebase';
 import useAuth from '../hooks/useAuth';
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 function Modal() {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -129,6 +128,7 @@ function Modal() {
       className="fixed !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden overflow-y-scroll rounded-md scrollbar-hide"
     >
       <>
+      <Toaster position="bottom-center"/>
         <button
           onClick={handleClose}
           className="modalButton absolute right-5 top-5 !z-40 h-9 w-9 border-none bg-[#181818] hover:bg-[#181818]"

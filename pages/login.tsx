@@ -94,7 +94,7 @@ function Login() {
           <button
             onClick={() => setLogin(false)}
             type="submit"
-            className=" text-white hover:underline"
+            className=" text-white hover:underline pl-1"
           >
             {" "}
             Sign up now

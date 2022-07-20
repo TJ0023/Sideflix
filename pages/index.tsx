@@ -93,6 +93,15 @@ const Home = ({
       </main>
 
       {showModal && <Modal />}
+
+      <footer className="flex justify-center align-baseline gap-2">
+        <h1 className="font-semibold pt-1">Powered by</h1>
+        <img
+         src="./logo-png/tmdb.svg"
+         width={60}
+         height={60}
+        />
+      </footer>
     </div>
   );
 };

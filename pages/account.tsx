@@ -19,7 +19,7 @@ function account({products}: Props) {
   return (
     <div>
         <Head>
-        <title>Account Settings - Netflix</title>
+        <title>Account Settings - Sideflix</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <header className={`bg-[#141414]`}>
@@ -44,8 +44,8 @@ function account({products}: Props) {
             <div>
                <h1 className='text-3xl md:text-4xl'>Account</h1>
                <div className="-ml-0.5 flex items-center gap-x-1.5">
-               <img src="https://rb.gy/4vfk4r" alt="" className="h-7 w-7" />
-            <p className="text-xs font-semibold text-[#555]">
+               <img src="./logo-png/membersinceGold.svg" alt="membership icon" className="h-10 w-10" />
+            <p className="text-base font-bold text-[#b5b5b5]">
               Member since {subscription?.created}
             </p>
                </div>
@@ -56,8 +56,8 @@ function account({products}: Props) {
 
     
 
-            <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0 md:pb-0">
-                <h4>Plan Details</h4>
+            <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0 md:pb-0 text-lg">
+                <h3>Plan Details</h3>
                 {/* Find the current Plan */}
                 <div className="col-span-2 font-medium">
                   {products.filter((product)=>product.id === subscription?.product)[0]?.name}
@@ -65,15 +65,26 @@ function account({products}: Props) {
                 <p  className="cursor-pointer text-blue-500 hover:underline md:text-right" >Change Plan</p>
             </div>
             <div className="mt-6 grid grid-cols-1 gap-x-4 border px-4 py-4 md:grid-cols-4 md:border-x-0 md:border-t md:border-b-0 md:px-0">
-          <h4 className="text-lg text-[gray]">Settings</h4>
+          <h4 className="text-lg text-[#b5b5b5]">Settings</h4>
           <p
-            className="col-span-3 cursor-pointer text-blue-500 hover:underline"
+            className="col-span-3 cursor-pointer text-blue-500 hover:underline text-lg"
             onClick={logout}
           >
             Sign out of all devices
           </p>
         </div>
         </main>
+
+        <footer className="w-100 flex justify-center">
+        <Link href="/">
+         
+        <button className="bg-amber-500 hover:bg-amber-400 text-white text-lg font-bold py-4 px-6 rounded cursor-pointer ease-in duration-200 ">
+          HOME
+        </button>
+        </Link>
+        </footer>
+
+
     </div>
   )
 }
