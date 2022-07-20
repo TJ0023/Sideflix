@@ -35,7 +35,7 @@ function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Image
-        src="https://rb.gy/p2hphi"
+        src="/logo-png/sideflixbaselogin.png"
         layout="fill"
         className="-z-10 !hidden opacity-60 sm:!inline"
         objectFit="cover"

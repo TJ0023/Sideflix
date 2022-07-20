@@ -25,6 +25,7 @@ function Header() {
 
   return (
     <header className={`${isScrolled && 'bg-[#14141473]'} bg-[#14141473]` }>
+        <Link href="/">
         <div className="flex items-center space-x-2 md:space-x-10">
             <img
                 src= './logo-png/sideflix.png'
@@ -32,16 +33,14 @@ function Header() {
                 height={100}
                 className="cursor-pointer object-contain"
             />
- <BasicMenu />
-            {/* <ul className='hidden space-x-4 md:flex transition duration-[.25s]'>
-                <li className='headerLink'><Link href="/">Home </Link></li>
-                <li className='headerLink'>TV Shows</li>
-                <li className='headerLink'>Movies</li>
-                <li className='headerLink'>New & Popular</li>
-                <li className='headerLink'>My List</li>
-              {/* <Link href="/account"></Link> 
-            </ul> */}
         </div>
+        </Link>
+ <BasicMenu />
+            <ul className='hidden space-x-4 md:flex transition duration-[.25s]'>
+                <li className='headerLink'><Link href="/">Home </Link></li>
+                <li className='headerLink'><Link href="/myList">My List</Link></li>
+                <li className='headerLink'><Link href="/account">Account</Link></li> 
+            </ul>
         {/* H or height measurements are .25em each increment */}
         <div className='flex items-center space-x-4 text-sm font-light'>
             <SearchIcon className='hidden h-6 w-6 cursor-pointer sm:inline '/>

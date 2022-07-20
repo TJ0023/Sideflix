@@ -1,7 +1,8 @@
 import Button from '@mui/material/Button'
+import { useState } from 'react'
+import Link from "next/link"
 import Menu from '@mui/material/Menu'
 import MenuItem from '@mui/material/MenuItem'
-import { useState } from 'react'
 
 export default function BasicMenu() {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
@@ -23,7 +24,7 @@ export default function BasicMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        className="!capitalize !text-white"
+        className="!capitalize !text-white headerLink"
       >
         Browse
       </Button>
@@ -37,11 +38,9 @@ export default function BasicMenu() {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={handleClose}>Home</MenuItem>
-        <MenuItem onClick={handleClose}>TV Shows</MenuItem>
-        <MenuItem onClick={handleClose}>Movies</MenuItem>
-        <MenuItem onClick={handleClose}>New & Popular</MenuItem>
-        <MenuItem onClick={handleClose}>My List</MenuItem>
+        <MenuItem onClick={handleClose}><Link href="/">Home </Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link href="/myList">My List </Link></MenuItem>
+        <MenuItem onClick={handleClose}><Link href="/account">Account </Link></MenuItem>
       </Menu>
     </div>
   )

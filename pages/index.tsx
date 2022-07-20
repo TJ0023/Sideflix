@@ -64,7 +64,7 @@ const Home = ({
   // if (loading) return "Loading";
 
   return (
-    <div className="overflow-x-hidden scrollbar-hide relative h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:h-[100vw]">
+    <div className="overflow-x-hidden scrollbar-hide relative h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:h-[100vh]">
       <Head>
         <title>Sideflix</title>
         <link rel="icon" href="/favicon.ico" />
