@@ -13,7 +13,7 @@ interface Props {
 function Thumbnail({ movie }: Props) {
   const [showModal, setShowModal] = useRecoilState(modalState);
   const [currentMovie, setCurrentMovie] = useRecoilState(movieState);
-  
+
   return (
     <div
       className="relative md:h-[270px] md:min-w-[480px] min-w-[320px] h-[180px] cursor-pointer transition duration-200 ease-out flex justify-center "
