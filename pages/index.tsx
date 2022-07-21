@@ -76,7 +76,7 @@ const Home = ({
       <main className="relative pl-4 pb-24 lg:space-y-24 lg:pl-16">
         <Banner netflixOriginals={netflixOriginals} />
 
-        <div className="pt-[30vh] md:pt-[0px] pb-[170px]">
+        <div className="pb-[75px]">
           {list.length > 0 && <Row2 title="My List" movies={list} />}
         </div>
 
@@ -99,7 +99,7 @@ const Home = ({
 
       {showModal && <Modal />}
 
-      <footer className="flex justify-center align-baseline gap-2">
+      <footer className="flex justify-center align-baseline gap-2 pointer-events-none">
         <h1 className="font-semibold pt-1">Powered by</h1>
         <img
          src="./logo-png/tmdb.svg"
