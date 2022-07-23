@@ -24,7 +24,7 @@ export default function BasicMenu() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        className="!capitalize !text-white headerLink"
+        className="!capitalize !text-white headerLink !text-xl"
       >
         Browse
       </Button>

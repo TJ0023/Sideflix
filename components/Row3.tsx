@@ -21,7 +21,7 @@ function Row({title, movies}:Props) {
         </h2>
         <div className='group relative md:-ml-2'>
         
-        <div className='scrollbar-hide flex flex-wrap justify-center items-center gap-[25px] '>
+        <div className='scrollbar-hide flex flex-wrap justify-center items-center gap-[25px] mb-[25px]'>
             {movies.map((movie) => (
            
            <Thumbnail3 key={movie.id} movie={movie}/>
@@ -31,6 +31,17 @@ function Row({title, movies}:Props) {
         </div>
 
         </div>
+      
+        <footer className='mb-[25px] w-full h-[50px] z-[-1]'>
+            <div className="flex justify-center align-baseline gap-2 pointer-events-none">
+             <h1 className="font-semibold pt-1">Powered by</h1>
+            <img
+              src="./logo-png/tmdb.svg"
+              width={60}
+              height={60}
+              />
+        </div>
+        </footer>
     </div>
   )
 }

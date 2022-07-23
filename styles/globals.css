@@ -5,6 +5,9 @@
 /* html body, heading*/
 
 @layer base {
+  * {
+    scroll-behavior: smooth;
+  }
   body {
     @apply bg-[#141414] text-white scrollbar-hide;
   }
@@ -20,9 +23,14 @@ Of course you can use not and just use vanilla css which is fine but why use tai
 
 @layer components {
   .headerLink {
-    @apply cursor-pointer text-sm font-semibold text-[#ffffff] transition duration-[.25s] hover:text-[#ffdd00];
+    @apply cursor-pointer text-xl font-semibold text-[#ffffff] transition duration-[.25s] hover:text-[#ffdd00];
   }
-
+  .searchIcon {
+    @apply  h-6 w-6 cursor-pointer sm:inline hover:text-[#ffdd00] transition duration-[.25s]
+  }
+  .searchIcon2 {
+    @apply  h-6 w-6 cursor-pointer sm:inline hover:text-amber-700 transition duration-[.25s]
+  }
   .bannerButton {
     @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:px-8 md:text-xl;
   }
@@ -74,5 +82,50 @@ Of course you can use not and just use vanilla css which is fine but why use tai
     .menu .MuiMenuItem-root {
       @apply !block !w-72 !py-3.5 !text-center !text-sm !font-light !text-[#b3b3b3] !transition !duration-200 first:cursor-default first:!font-normal first:!text-white hover:!bg-[#11100F];
     }
+
+    .skeletonCard {
+      background: linear-gradient(-45deg, #f0b432, #d98f27, #b54b16, #b32f0e);
+	    background-size: 400% 400%;
+  	  animation: gradient 2s ease infinite;
+    }
+
+      @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+    input[type="search"] {
+    -webkit-appearance: none !important;
+    background-clip: padding-box;
+    background-color: white;
+    vertical-align: middle;
+    border-radius: 0.25rem 0 0 0.25em;
+    border: 1px solid #e0e0e5;
+    font-size: 1rem;
+    max-width: 900px;
+    line-height: 2;
+    padding: 0.375rem 1.25rem;
+    -webkit-transition: border-color 0.2s;
+    -moz-transition: border-color 0.2s;
+    transition: border-color 0.2s;
+  }
+
+  input[type="search"]:focus {
+    transition: all 0.5s;
+    box-shadow: 0 0 10px #f9d442b9;
+    border-color: #f9d342;
+    outline: none;
+  }
+  
+  .searchButton {
+    border-radius: 0rem 0.25em 0.25em 0em;
+  }
 }
 

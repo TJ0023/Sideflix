@@ -99,7 +99,7 @@ const Home = ({
 
       {showModal && <Modal />}
 
-      <footer className="flex justify-center align-baseline gap-2 pointer-events-none">
+      <footer className="flex justify-center align-baseline gap-2 pointer-events-none mb-[25px]">
         <h1 className="font-semibold pt-1">Powered by</h1>
         <img
          src="./logo-png/tmdb.svg"

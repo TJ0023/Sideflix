@@ -138,12 +138,13 @@ function Modal() {
 
         <div className="relative pt-[56.25%]">
           <ReactPlayer
-            url={`https://www.youtube.com/watch?v=${trailer}`}
+            url={`https://www.youtube.com/watch?v=${trailer || 'dQw4w9WgXcQ' || 'jfKfPfyJRdk'} `}
             width="100%"
             height="100%"
             style={{ position: "absolute", top: "0", left: "0" }}
             playing
             muted={muted}
+            volume={0.9}
           />
           <div className="absolute bottom-10 flex w-full items-center justify-between px-10">
             <div className="flex space-x-2">
