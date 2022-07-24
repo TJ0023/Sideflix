@@ -10,6 +10,8 @@ import payments from "../lib/stripe";
 import Modal from "../components/Modal";
 import { modalState, movieState } from "../atoms/modalAtom";
 import { useRecoilValue } from "recoil";
+import Image from 'next/image';
+import ReturnTop from '../components/returnTop';
 
 
 interface Props {
@@ -29,23 +31,24 @@ const myList = ({products,}: Props) => {
   if (!subscription) return <Plans products={products} />;
 
   return (
-    <div className="overflow-x-hidden scrollbar-hide relative  h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:h-[100vh]">
+    <div className="scrollbar-hide relative overflow-y-auto h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511]">
+
       <Header/>
 
+      <Image
+        src="/logo-png/sideflixbaselogin.png"
+        layout="fill"
+        className="-z-10 !hidden opacity-30 sm:!inline"
+        objectFit="cover"
+      />
+
       <main className="relative w-full  lg:space-y-24 lg:pl-16 pt-[12vh] px-[70px]">
-
-      <section>
-
       <Row3 title="My List" movies={list}/>
-
-  
-      </section>
-
       </main>
+
       {showModal && <Modal />}
 
-
- 
+      <ReturnTop />
     </div>
   )
 };

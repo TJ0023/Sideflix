@@ -7,9 +7,9 @@ import Modal from "../components/Modal";
 import useList from "../hooks/useList";
 import MovieRow from "../components/MovieRow";
 import Image from "next/image";
-import {ChevronUpIcon, SearchIcon} from "@heroicons/react/solid";
+import {SearchIcon} from "@heroicons/react/solid";
 import SkeletonCard from '../components/SkeletonCard';
-
+import ReturnTop from '../components/returnTop';
 
 const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
@@ -25,12 +25,7 @@ const search = () => {
     const showModal = useRecoilValue(modalState);
     const movieRecoilState = useRecoilValue(movieState)
     const list = useList(user?.uid);
-
-    function searchResult() {
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-    }
-
+    
     // Just fetches the result of the Popular Movies in TMDB
     useEffect(() => {
       fetch(popular2)
@@ -73,25 +68,28 @@ const search = () => {
       setSearchTerm(event.target.value);
     }
 
+
+
+
   return (
-    <div className='h-max'>
+    <div className='bg-gradient-to-b from-yellow-900/15 to-{#010511] h-screen'>
         <Header/>
         <Image
         src="/logo-png/sideflixbaselogin.png"
         layout="fill"
-        className="-z-10 !hidden opacity-30 sm:!inline"
+        className="-z-10 opacity-30 sm:!inline"
         objectFit="cover"
       />
 
         <div className="relative shrink-0 flex flex-col gap-[100px] pt-[20vh] justify-center items-center">
- 
+
         <div className=" w-[100vw] ">
                 <form onSubmit={handleOnSubmit} className='flex flex-row justify-center '>
                     <input 
                     className="!text-2xl !text-black w-[80%] md:[85%]" 
                     type="search" 
                     placeholder="Search..."
-                    pattern="^[^ ].+[^ ]$"
+                    pattern="^[^ ].+$"
                     value={searchTerm}
                     onChange={handleOnChange}
                     required
@@ -104,7 +102,7 @@ const search = () => {
 
         <main>
 
-        <div className='scrollbar-hide flex flex-wrap justify-center items-center gap-[25px] transition duration-200 ease-out'>
+        <div className='scrollbar-hide flex flex-wrap justify-center items-center gap-[25px] transition duration-200 ease-out' id='resultsDiv'>
 
         {isLoading && <SkeletonCard cards={5}/>}
           <div className={(isLoading === true) ? 'hidden' : 'scrollbar-hide flex flex-wrap justify-center items-center gap-[25px] transition duration-200 ease-out'}>
@@ -134,7 +132,7 @@ const search = () => {
         </div>
         </footer>
 
-        <ChevronUpIcon className='h-[60px] w-[60px] fixed right-2 bottom-5 cursor-pointer bg-amber-500 rounded-full p-2 z-[50]' onClick={searchResult}/>
+        <ReturnTop/>
     </div>
   )
 }

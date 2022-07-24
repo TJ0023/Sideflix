@@ -15,6 +15,8 @@ import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import payments from "../lib/stripe";
 import useSubscription from "../hooks/useSubscription";
 import useList from "../hooks/useList";
+import { ChevronUpIcon } from "@heroicons/react/solid";
+import ReturnTop from "../components/returnTop";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -63,9 +65,8 @@ const Home = ({
 
   //original code
   // if (loading) return "Loading";
-
   return (
-    <div className="overflow-x-hidden scrollbar-hide relative h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:h-[100vh]">
+    <div className="overflow-x-hidden scrollbar-hide relative overflow-y-auto bg-gradient-to-b from-yellow-900/15 to-{#010511] lg:overflow-y-auto">
       <Head>
         <title>Sideflix</title>
         <link rel="icon" href="/favicon.ico" />
@@ -106,6 +107,7 @@ const Home = ({
          width={60}
          height={60}
         />
+      <ReturnTop />
       </footer>
     </div>
   );

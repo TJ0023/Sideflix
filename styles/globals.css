@@ -26,11 +26,16 @@ Of course you can use not and just use vanilla css which is fine but why use tai
     @apply cursor-pointer text-xl font-semibold text-[#ffffff] transition duration-[.25s] hover:text-[#ffdd00];
   }
   .searchIcon {
-    @apply  h-6 w-6 cursor-pointer sm:inline hover:text-[#ffdd00] transition duration-[.25s]
+    @apply  h-6 w-6 cursor-pointer sm:inline hover:text-[#ffdd00] transition duration-[.25s];
   }
   .searchIcon2 {
-    @apply  h-6 w-6 cursor-pointer sm:inline hover:text-amber-700 transition duration-[.25s]
+    @apply  h-6 w-6 cursor-pointer sm:inline hover:text-amber-700 transition duration-[.25s];
   }
+
+  .returnTop {
+    @apply h-[60px] w-[60px] fixed right-2 bottom-5 cursor-pointer bg-amber-500 rounded-full p-2 z-[50] transition duration-[.35s];
+  }
+
   .bannerButton {
     @apply flex items-center gap-x-2 rounded px-5 py-1.5 text-sm font-semibold transition hover:opacity-75 md:py-2.5 md:px-8 md:text-xl;
   }
@@ -127,5 +132,7 @@ Of course you can use not and just use vanilla css which is fine but why use tai
   .searchButton {
     border-radius: 0rem 0.25em 0.25em 0em;
   }
+
+ 
 }
 
