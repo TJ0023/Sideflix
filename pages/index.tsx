@@ -1,5 +1,4 @@
 import type { NextPage } from "next";
-import { ChevronUpIcon } from "@heroicons/react/solid";
 import Head from "next/head";
 import Header from "../components/Header";
 import Banner from "../components/Banner";
@@ -16,7 +15,7 @@ import { getProducts, Product } from "@stripe/firestore-stripe-payments";
 import payments from "../lib/stripe";
 import useSubscription from "../hooks/useSubscription";
 import useList from "../hooks/useList";
-import ReturnTop from "../components/returnTop";
+import ReturnTop from "../components/returnTop2";
 
 interface Props {
   netflixOriginals: Movie[];
@@ -47,40 +46,13 @@ const Home = ({
   upcoming,
   products,
 }: Props) => {
-
-    //No one has a screen bigger than 10000 pixels right?
-    function searchResult() {
-      console.log('Going Up');
-      window.scrollBy(0, -10000);
-    }
-
-   // When the user scrolls down 20px from the top of the document, show the button
-   window.onscroll = function() {scrollFunction()};
-
-   const mybutton = document.getElementById("returnTopButton");
-   
-   function scrollFunction() {
-    const x = document.getElementById("returnTopButton");
-    x!.style.display = window.getComputedStyle(document.getElementById("returnTopButton")!).display;
-    
-     if ((document.body.scrollTop || document.documentElement.scrollTop) === 0) {
-      mybutton!.style.pointerEvents = "none";
-      mybutton!.style.opacity = "0";
-     } else {
-       mybutton!.style.opacity = "1";
-       mybutton!.style.pointerEvents = "auto";
-     }
-   }
-
   // const {logout, loading} = useAuth();
-
   //spencer
   const { loading, user } = useAuth();
   const showModal = useRecoilValue(modalState);
   const subscription = useSubscription(user);
   const movie = useRecoilValue(movieState)
   const list = useList(user?.uid);
-
 
   if (loading || subscription === null) return null;
 
@@ -131,7 +103,6 @@ const Home = ({
          width={60}
          height={60}
         />
-        <ChevronUpIcon className='returnTop pointer-events-none opacity-0' onClick={searchResult} id='returnTopButton'/>
       </footer>
     </div>
   );

@@ -13,7 +13,7 @@ function Row({title, movies}:Props) {
 
 
   return (
-    <div className='scrollbar-hide h-40 space-y-0.5 md:space-6-2' >
+    <div className='scrollbar-hide overflow-y-auto space-y-0.5 md:space-6-2' >
         <h2 
         className="w-56 cursor-pointer text-shadow- text-4xl font-semibold text-[#e5e5e5] 
         transition duration-200 hover:text-white md:text-4xl pb-[25px]">

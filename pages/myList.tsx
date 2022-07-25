@@ -11,7 +11,7 @@ import Modal from "../components/Modal";
 import { modalState, movieState } from "../atoms/modalAtom";
 import { useRecoilValue } from "recoil";
 import Image from 'next/image';
-import ReturnTop from '../components/returnTop';
+import ReturnTop2 from '../components/returnTop2';
 
 
 interface Props {
@@ -30,8 +30,9 @@ const myList = ({products,}: Props) => {
 
   if (!subscription) return <Plans products={products} />;
 
+
   return (
-    <div className="scrollbar-hide relative overflow-y-auto h-screen bg-gradient-to-b from-yellow-900/15 to-{#010511]">
+    <div className="scrollbar-hide relative overflow-y-auto bg-gradient-to-b from-yellow-900/15 to-{#010511]">
 
       <Header/>
 
@@ -48,7 +49,7 @@ const myList = ({products,}: Props) => {
 
       {showModal && <Modal />}
 
-      <ReturnTop />
+      <ReturnTop2 />
     </div>
   )
 };
